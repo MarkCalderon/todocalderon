@@ -1,0 +1,48 @@
+#main {
+	margin: 0 auto;
+	width: 800px;
+
+	.main__container {
+		padding: 20px;
+		border: 1px solid $dark_blue;
+
+		.inner__container {
+
+			.todo__container {
+				display: flex;
+				justify-content: center;
+				text-align: center;
+				flex-direction:column;
+				width: 100%;
+
+				.submit__label, .submit__field {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					font: normal 15px $Oswald;
+					height: 50px;
+				}
+
+				.submit__field {
+					font: normal 30px $Oswald;
+				}
+			}
+
+			.todo__list {
+				padding: 20px;
+				font: normal 20px $Oswald;
+
+				li {
+					padding: 10px;
+					background: $light_blue;
+				}
+
+				li:not(:nth-child(1)) {
+					margin-top: 10px;
+					color: $white;
+				}
+			}
+		}
+	}
+}

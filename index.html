@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+
+    <title>TodoList</title>
+    <meta name="description" content="">
+    <meta name="author" content="Mark Calderon">
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500&display=swap" rel="stylesheet">
+  	<link rel="stylesheet" href="assets/css/main.css">
+
+    </head>
+
+    <body class="top">
+    	<div id="app">
+	        <header>
+	            <nav class="nav__container">
+	                <ul class="nav__list">
+	                    <li class="site__container">
+	                        <div class="site__logo"></div>
+	                        <h4 class="site__name">TODOCALDERON</h4>
+	                    </li>
+	                    <li class="nav__link"><a v-on:click.prevent="openTab(1)" href="./">CURRENT TASKS</a></li>
+	                    <li class="nav__link"><a v-on:click.prevent="openTab(2)" href="./">PAST TASKS</a></li>
+	                    <li class="nav__link"><a v-on:click.prevent="openTab(3)" href="./">COMPLETED TASKS</a></li>
+	                </ul>
+	            </nav>
+	        </header>
+
+	        <div id="main">
+	        	<div class="main__container">
+	        		<div class="inner__container">
+	        			
+		    				<form v-on:keydown.enter.prevent="addNewTask">
+		        				<div class="todo__container" >
+		        					<input v-model="newTodoText" autocomplete="off" class="submit__field" type="text" required name="submit_data" placeholder="Type in a task...">
+		        				</div>
+		    				</form>
+
+		        			<div class="todo__list__container" v-if="currentTask">
+		        				<ul class="todo__list">
+		        					<h3>Current Tasks</h3>
+		        					<tasklist 
+		        						v-for="(todo, index) in todos"	
+		        							v-bind:key="todo.id"
+		        					    	v-bind:title="todo.title"
+		        					    	v-on:remove="todos.splice(index, 1)">
+	        						</tasklist>
+		        				</ul>
+		     						
+		        			</div>
+
+		        			<div class="todo__list__container" v-if="pastTask">
+		        				<ul class="todo__list">
+		        					<h3>Past tasks</h3>
+		        				</ul>
+		     						
+		        			</div>
+
+		        			<div class="todo__list__container" v-if="completeTask">
+		        				<ul class="todo__list">
+		        					<h3>Complete tasks</h3>
+		        				</ul>
+		     						
+		        			</div>
+
+					</div>
+	        	</div>
+	        </div>
+		</div>
+	        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	        <script src="assets/js/main.js"></script>
+    </body>
+</html>

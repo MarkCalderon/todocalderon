@@ -1,0 +1,52 @@
+header {
+    margin: 100px auto 0;
+    width: 800px;
+
+    .nav__container {
+        
+        .nav__list {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            border-top: 1px solid $dark_blue;
+            border-right: 1px solid $dark_blue;
+            
+            .site__container {
+                display: flex;
+                align-items: center;
+                flex-basis: 300px;
+                
+                .site__name {
+                    margin: 0 50px;
+                    font: bold 20px $Oswald;
+                }
+
+                .site__logo {
+                    width: 50px;
+                    height: 50px;
+                    background: black;
+                }
+            }
+
+            .nav__link {
+                flex-basis: 150px;
+                flex-grow: 1;
+                background: $light_blue;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 50px;
+                    box-sizing: border-box;
+                    color: $dark_blue;
+                    font: 400 19px $Oswald;
+                    border-left: 1px solid $dark_blue;
+                    text-transform: uppercase;
+                    @include hoverOpacity;
+                }
+            }
+        }
+    }
+}

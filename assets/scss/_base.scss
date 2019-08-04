@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+a, a:link, a:visited {
+    text-decoration: none;
+}
+
+/* Color Templates */
+$light_blue: #11B5E4;
+$mid_blue: #1481BA;
+$dark_green: #034748;
+$dark_blue: #001021;
+$white: white;
+
+/* Font Templates */
+$Oswald: 'Oswald', sans-serif;
+
+body {
+	font: normal 15px $Oswald;
+}
+
+
+@mixin hoverOpacity {
+	transition: .5s all linear;
+
+	&:hover {
+		background: $dark_green;
+		color: $white;
+	}
+}

@@ -1,0 +1,43 @@
+* { margin: 0; padding: 0; }
+
+ul, li { list-style-type: none; }
+
+a, a:link, a:visited { text-decoration: none; }
+
+/* Color Templates */
+/* Font Templates */
+body { font: normal 15px "Oswald", sans-serif; }
+
+header { margin: 100px auto 0; width: 800px; }
+
+header .nav__container .nav__list { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -ms-flex-wrap: wrap; flex-wrap: wrap; border-top: 1px solid #001021; border-right: 1px solid #001021; }
+
+header .nav__container .nav__list .site__container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -ms-flex-preferred-size: 300px; flex-basis: 300px; }
+
+header .nav__container .nav__list .site__container .site__name { margin: 0 50px; font: bold 20px "Oswald", sans-serif; }
+
+header .nav__container .nav__list .site__container .site__logo { width: 50px; height: 50px; background: black; }
+
+header .nav__container .nav__list .nav__link { -ms-flex-preferred-size: 150px; flex-basis: 150px; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; background: #11B5E4; }
+
+header .nav__container .nav__list .nav__link a { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; height: 50px; -webkit-box-sizing: border-box; box-sizing: border-box; color: #001021; font: 400 19px "Oswald", sans-serif; border-left: 1px solid #001021; text-transform: uppercase; -webkit-transition: .5s all linear; -o-transition: .5s all linear; transition: .5s all linear; }
+
+header .nav__container .nav__list .nav__link a:hover { background: #034748; color: white; }
+
+#main { margin: 0 auto; width: 800px; }
+
+#main .main__container { padding: 20px; border: 1px solid #001021; }
+
+#main .main__container .inner__container .todo__container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: 100%; }
+
+#main .main__container .inner__container .todo__container .submit__label, #main .main__container .inner__container .todo__container .submit__field { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center; font: normal 15px "Oswald", sans-serif; height: 50px; }
+
+#main .main__container .inner__container .todo__container .submit__field { font: normal 30px "Oswald", sans-serif; }
+
+#main .main__container .inner__container .todo__list { padding: 20px; font: normal 20px "Oswald", sans-serif; }
+
+#main .main__container .inner__container .todo__list li { padding: 10px; background: #11B5E4; }
+
+#main .main__container .inner__container .todo__list li:not(:nth-child(1)) { margin-top: 10px; color: white; }
+
+/*# sourceMappingURL=main.css.map */
