@@ -32,13 +32,47 @@
 			.todo__list {
 				padding: 20px;
 				font: normal 20px $Oswald;
+				background: $lighter_blue;
 
-				li {
+				.list__item {
 					padding: 10px;
+					display: flex;
+					justify-content: flex-start;
 					background: $light_blue;
+
+					.list__text {
+						flex-basis: 400px;
+					    text-transform: capitalize;
+					}
+
+					.btn__delete, .btn__done {
+						border: 0;
+					    outline: 0;
+						min-height: 38px;
+					    flex-basis: 110px;
+					    flex-grow: 1;
+					    background: $mid_blue;
+					    color: $white;
+					    font: normal 15px $Oswald;
+					    text-transform: uppercase;
+					    transition: .2s all linear;
+
+					    &:hover {
+					    	background: $dark_blue;
+					    	cursor: pointer;
+					    }
+					}
+
+					.btn__done {
+						background: $dark_green;
+
+						&:hover {
+							background: $light_blue;
+						}
+					}
 				}
 
-				li:not(:nth-child(1)) {
+				.list__item:not(:nth-child(1)) {
 					margin-top: 10px;
 					color: $white;
 				}

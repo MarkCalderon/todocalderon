@@ -34,10 +34,20 @@ header .nav__container .nav__list .nav__link a:hover { background: #034748; colo
 
 #main .main__container .inner__container .todo__container .submit__field { font: normal 30px "Oswald", sans-serif; }
 
-#main .main__container .inner__container .todo__list { padding: 20px; font: normal 20px "Oswald", sans-serif; }
+#main .main__container .inner__container .todo__list { padding: 20px; font: normal 20px "Oswald", sans-serif; background: #d8f5fd; }
 
-#main .main__container .inner__container .todo__list li { padding: 10px; background: #11B5E4; }
+#main .main__container .inner__container .todo__list .list__item { padding: 10px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: start; -ms-flex-pack: start; justify-content: flex-start; background: #11B5E4; }
 
-#main .main__container .inner__container .todo__list li:not(:nth-child(1)) { margin-top: 10px; color: white; }
+#main .main__container .inner__container .todo__list .list__item .list__text { -ms-flex-preferred-size: 400px; flex-basis: 400px; text-transform: capitalize; }
+
+#main .main__container .inner__container .todo__list .list__item .btn__delete, #main .main__container .inner__container .todo__list .list__item .btn__done { border: 0; outline: 0; min-height: 38px; -ms-flex-preferred-size: 110px; flex-basis: 110px; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; background: #1481BA; color: white; font: normal 15px "Oswald", sans-serif; text-transform: uppercase; -webkit-transition: .2s all linear; -o-transition: .2s all linear; transition: .2s all linear; }
+
+#main .main__container .inner__container .todo__list .list__item .btn__delete:hover, #main .main__container .inner__container .todo__list .list__item .btn__done:hover { background: #001021; cursor: pointer; }
+
+#main .main__container .inner__container .todo__list .list__item .btn__done { background: #034748; }
+
+#main .main__container .inner__container .todo__list .list__item .btn__done:hover { background: #11B5E4; }
+
+#main .main__container .inner__container .todo__list .list__item:not(:nth-child(1)) { margin-top: 10px; color: white; }
 
 /*# sourceMappingURL=main.css.map */

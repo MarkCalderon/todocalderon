@@ -2,4 +2,10 @@
 
 ul, li { list-style-type: none; }
 
+a, a:link, a:visited { text-decoration: none; }
+
+/* Color Templates */
+/* Font Templates */
+body { font: normal 15px "Oswald", sans-serif; }
+
 /*# sourceMappingURL=_base.css.map */
