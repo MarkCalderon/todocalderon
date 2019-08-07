@@ -33,7 +33,9 @@
 	        			
 		    				<form v-on:keydown.enter.prevent="addNewTask">
 		        				<div class="todo__container" >
+		        					<form>
 		        					<input v-model="newTodoText" autocomplete="off" class="submit__field" type="text" name="submit_data" placeholder="Type in a task...">
+		        					</form>
 		        				</div>
 		    				</form>
 
@@ -44,8 +46,8 @@
 		        						v-for="(todo, index) in todos"	
 		        							v-bind:key="todo.id"
 		        					    	v-bind:title="todo.title"
-		        					    	v-on:remove="todos.splice(index, 1)"
-		        					    	v-on:finish="taskFinish(index)">
+		        					    	v-on:remove="taskRemove(todo.id)"
+		        					    	v-on:finish="taskFinish(todo.id)">
 	        						</tasklist-current>
 		        				</ul>
 		     						
@@ -74,7 +76,14 @@
 	        	</div>
 	        </div>
 		</div>
-	        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+			<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+        	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+        	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	        <script src="assets/js/main.js"></script>
+		  	<script src="https://apis.google.com/js/platform.js" async defer></script>
+  	        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  	            crossorigin="anonymous"></script>
+  	        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+  	            crossorigin="anonymous"></script>
     </body>
 </html>

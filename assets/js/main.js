@@ -1,3 +1,7 @@
+// const axios = require('axios');
+// Vue.prototype.$http = axios;
+Vue.use(VueResource);
+
 Vue.component('tasklist-current', {
   	template: `
 		<li class="list__item">
@@ -8,7 +12,7 @@ Vue.component('tasklist-current', {
   	`,
 
   	// Props should be v-bind on the v-for loop
-  	props: ['title'],
+  	props: ['title']
 });
 
 Vue.component('tasklist-complete', {
@@ -22,7 +26,9 @@ Vue.component('tasklist-complete', {
   	props: ['title'],
 });
 
+
 var app = new Vue({
+
 	el: '#app',
 	data: {
 		nextTodoID: 1,
@@ -34,17 +40,8 @@ var app = new Vue({
 		completeTask: false,
 	},
 	methods: {
-		addNewTask: function () {
-			if(!this.newTodoText == '') {
 
-				this.todos.push({
-					id: this.nextTodoID++,
-					title: this.newTodoText,
-					status: 'current'
-				});
-				this.newTodoText = '';
-			}
-		},
+		// TAB OPTIONS
 		openTab: function(tab) {
 			if(tab == 1) {
 				this.completeTask = false;
@@ -55,24 +52,67 @@ var app = new Vue({
 				this.completeTask = true;
 			}
 		},
-		taskFinish: function(idReceived) {
-			for(var key in this.todos){
-				if(key == idReceived) {
-					this.todos[key].status = 'done';
 
-					this.todosComplete.push({
-						id: this.nextTodoID++,
-						title: this.todos[key].title,
-						status: 'complete'
-					});
+		// ADDING DATA THROUGH $HTTP
+		addNewTask: function () {
+			if(!this.newTodoText == '') {
 
-					this.todos.splice(key, 1);
-				}
+	            this.$http.post('https://todotrackerz.firebaseio.com/posts.json',{
+		            // id: this.nextTodoID++,
+					title: this.newTodoText,
+					status: 'current'
+				}).then(function(){
+					this.newTodoText = '';
+				});
 			}
-			console.table(this.todosComplete);
 		},
 
-		startTimer: function() {
-		}
+		// REMOVING DATA THROUGH $HTTP
+		taskRemove: function(idReceived) {
+			this.$http.delete('https://todotrackerz.firebaseio.com/posts/' + idReceived + '.json').then(function(){
+				this.todos.splice(idReceived, 1);
+				console.log('Successfully delete item.');
+			});
+		},
+
+		// UPDATING DATA THROUGH $HTTP
+		taskFinish: function(idReceived) {
+				for(let key in this.todos) {
+					if(this.todos[key].id == idReceived) {
+						console.log('..');
+
+						this.$http.put('https://todotrackerz.firebaseio.com/posts/' + idReceived + '.json',{
+							id: this.todos[key].id,
+							title: this.todos[key].title,
+							status: 'complete'
+
+						}).then(function(){
+							console.log('Task finish...');
+						});
+					}
+				}	
+		},
 	},
+	// LOADS DATA UPON LOADING
+	created() {
+		this.$http.get('https://todotrackerz.firebaseio.com/posts.json').then(function(data){
+			return data.json();
+		}).then(function(data){
+
+			for(let key in data) {
+				data[key].id = key;
+				//If item status is == complete
+				if(data[key].status == 'complete') {
+					this.todosComplete.push(data[key]);
+					console.log('complete');
+				}
+				// Else if item status is == current
+				else {
+					this.todos.push(data[key]);
+				}
+
+			}
+		});
+
+	}
 });
