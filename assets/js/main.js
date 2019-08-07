@@ -1,5 +1,4 @@
-// const axios = require('axios');
-// Vue.prototype.$http = axios;
+// For $HTTP REST API, Import VueResource
 Vue.use(VueResource);
 
 Vue.component('tasklist-current', {
@@ -54,15 +53,16 @@ var app = new Vue({
 		},
 
 		// ADDING DATA THROUGH $HTTP
-		addNewTask: function () {
+		taskAdd: function () {
 			if(!this.newTodoText == '') {
 
 	            this.$http.post('https://todotrackerz.firebaseio.com/posts.json',{
-		            // id: this.nextTodoID++,
+	            // Using Firebase index as ID, otherwise, id: this.nextTodoID++,
 					title: this.newTodoText,
 					status: 'current'
 				}).then(function(){
 					this.newTodoText = '';
+					console.log('Successfully added item...');
 				});
 			}
 		},
@@ -71,7 +71,7 @@ var app = new Vue({
 		taskRemove: function(idReceived) {
 			this.$http.delete('https://todotrackerz.firebaseio.com/posts/' + idReceived + '.json').then(function(){
 				this.todos.splice(idReceived, 1);
-				console.log('Successfully delete item.');
+				console.log('Successfully deleted item...');
 			});
 		},
 
@@ -87,7 +87,7 @@ var app = new Vue({
 							status: 'complete'
 
 						}).then(function(){
-							console.log('Task finish...');
+							console.log('Task has been completed...');
 						});
 					}
 				}	
@@ -104,7 +104,6 @@ var app = new Vue({
 				//If item status is == complete
 				if(data[key].status == 'complete') {
 					this.todosComplete.push(data[key]);
-					console.log('complete');
 				}
 				// Else if item status is == current
 				else {
